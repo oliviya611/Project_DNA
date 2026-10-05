@@ -1,159 +1,551 @@
-PROJECTDNA - COMPLETE STUDENT PROJECT AND TEAM FORMATION SYSTEM
-================================================================
+PROJECTDNA – STUDENT PROJECT AND TEAM FORMATION SYSTEM
+======================================================
 
 1. PROJECT OVERVIEW
 -------------------
-ProjectDNA is a beginner-friendly web application for students and project creators. Students can register, maintain skills/interests, browse projects, see skill matches, receive recommendations, and form teams. Creators can create projects and view matching students.
 
-2. TECHNOLOGIES
-----------------
-Frontend: HTML5, CSS3, Vanilla JavaScript
-Backend: Java built-in HTTP Server (com.sun.net.httpserver)
-Database: SQLite through JDBC
-Data structures: ArrayList, HashSet, HashMap, PriorityQueue concept/ranking
+ProjectDNA is a web-based application designed to help students find and form project teams based on their skills and interests.
 
-3. EXTERNAL INSTALLATION
-------------------------
-Required:
-- JDK 17 or newer (JDK 24 is also fine).
-- VS Code is recommended for editing/running, but not required by the application itself.
-- A modern browser such as Chrome or Edge.
-- Internet is needed ON FIRST RUN if lib/sqlite-jdbc.jar is missing, because run.bat automatically downloads the JDBC driver. After it is downloaded, the application can use the local JAR.
+Students can create an account, add their skills and interests, browse available projects, check how well their skills match a project, receive project recommendations, and communicate with project creators.
 
-No Node.js, npm, MySQL, XAMPP, Tomcat, Maven or Live Server is required.
+Project creators can create and manage projects, view students who match their required skills, contact suitable students, and form teams for their projects.
 
-4. HOW TO RUN IN VS CODE
-------------------------
-1. Extract ProjectDNA_COMPLETE.zip.
-2. Open the extracted ProjectDNA folder in VS Code.
-3. Make sure JDK is installed. In the VS Code terminal, run: java -version
-4. Double-click setup.bat once, or simply double-click run.bat.
-5. run.bat downloads the SQLite JDBC driver automatically if necessary, compiles the Java source, creates data/projectdna.db, and starts the server.
-6. Open Chrome and visit: http://localhost:8080
-7. Keep the run.bat console open while demonstrating.
-8. Close the console window to stop the server.
+The main purpose of ProjectDNA is to make finding suitable project teammates easier and more organized. Instead of manually searching for students with the required skills, the system uses skill matching to help identify suitable candidates.
+
+
+2. TECHNOLOGIES USED
+--------------------
+
+ProjectDNA uses simple technologies so that the application is easy to understand, run, and demonstrate as a college project.
+
+Frontend:
+- HTML5
+- CSS3
+- JavaScript
+
+Backend:
+- Java
+- Java Built-in HTTP Server (com.sun.net.httpserver)
+
+Database:
+- SQLite
+- JDBC
+
+Data Structures and Concepts:
+- ArrayList
+- HashSet
+- HashMap
+- PriorityQueue
+- Skill-based ranking and matching
+
+
+3. REQUIREMENTS AND INSTALLATION
+--------------------------------
+
+The following are required to run ProjectDNA:
+
+- JDK 17 or later
+- VS Code is recommended for editing and running the project
+- Google Chrome, Microsoft Edge, or another modern web browser
+- Internet connection during the first run if the SQLite JDBC driver is not available
+
+The application can automatically download the SQLite JDBC driver when required.
+
+The following software is NOT required:
+
+- Node.js
+- npm
+- MySQL
+- XAMPP
+- Tomcat
+- Maven
+- Live Server
+
+This makes ProjectDNA simple to set up for beginners.
+
+
+4. HOW TO RUN THE PROJECT
+-------------------------
+
+Step 1:
+Extract the ProjectDNA folder.
+
+Step 2:
+Open the extracted ProjectDNA folder in VS Code.
+
+Step 3:
+Make sure Java is installed.
+
+Open the VS Code terminal and run:
+
+java -version
+
+Make sure JDK 17 or a newer version is installed.
+
+Step 4:
+Run setup.bat once if required.
+
+Step 5:
+Run run.bat.
+
+The run.bat file automatically:
+
+1. Checks whether the SQLite JDBC driver is available.
+2. Downloads the driver if necessary.
+3. Compiles the Java source files.
+4. Creates the SQLite database.
+5. Starts the Java web server.
+
+Step 6:
+Open Google Chrome or Microsoft Edge.
+
+Visit:
+
+http://localhost:8080
+
+Step 7:
+Keep the run.bat console window open while using the application.
+
+Step 8:
+To stop the application, close the server/terminal window.
+
 
 5. DEMO ACCOUNTS
 ----------------
-Student:
-Email: student@projectdna.com
-Password: 1234
 
-Project Creator:
-Email: creator@projectdna.com
-Password: 1234
+For demonstration purposes, ProjectDNA includes sample accounts.
+
+STUDENT ACCOUNT
+
+Email:
+student@projectdna.com
+
+Password:
+1234
+
+
+PROJECT CREATOR ACCOUNT
+
+Email:
+creator@projectdna.com
+
+Password:
+1234
+
+These accounts can be used to demonstrate both the Student Portal and Creator Portal.
+
 
 6. DATABASE
 -----------
-The first successful startup automatically creates data/projectdna.db and these tables:
-users, students, creators, projects, project_skills, student_skills, teams, team_members, contact_requests.
-Demo accounts and sample projects are inserted only if they do not already exist.
+
+ProjectDNA uses SQLite as its database.
+
+The database file is stored at:
+
+data/projectdna.db
+
+The database is automatically created when the application starts successfully.
+
+The main database tables are:
+
+- users
+- students
+- creators
+- projects
+- project_skills
+- student_skills
+- teams
+- team_members
+- contact_requests
+- contact_messages
+
+The application also creates the demo accounts and sample projects if they do not already exist in the database.
+
 
 7. SKILL MATCHING
 -----------------
-Match Percentage = (Number of Matching Skills / Total Required Skills) x 100
-Example: required Python, Java, SQL, HTML and student has Python, Java, HTML = 3/4 x 100 = 75%.
 
-8. API ROUTES
--------------
+One of the main features of ProjectDNA is skill matching.
+
+The system compares the skills required for a project with the skills available in a student's profile.
+
+The matching percentage is calculated using:
+
+Match Percentage =
+(Number of Matching Skills / Total Required Skills) × 100
+
+
+Example:
+
+Suppose a project requires:
+
+- Python
+- Java
+- SQL
+- HTML
+
+A student has:
+
+- Python
+- Java
+- HTML
+
+The student matches 3 out of the 4 required skills.
+
+Therefore:
+
+3 / 4 × 100 = 75%
+
+The system will display a 75% skill match for that student and project.
+
+
+8. MAIN API ROUTES
+------------------
+
+The frontend communicates with the Java backend using API routes.
+
+Important API routes include:
+
 POST /api/login
 POST /api/register
-GET  /api/dashboard
-GET  /api/projects
+
+GET /api/dashboard
+GET /api/projects
 POST /api/projects
-GET  /api/recommendations
-GET  /api/profile
+
+GET /api/recommendations
+
+GET /api/profile
 POST /api/profile
-GET  /api/team
+
+GET /api/team
 POST /api/team
-GET  /api/creator/students
-GET  /api/creator/projects
+
+GET /api/creator/students
+GET /api/creator/projects
+
 POST /api/logout
+
 POST /api/contact/send
-GET  /api/contacts
+GET /api/contacts
 POST /api/contact/respond
 
-9. FOLDER STRUCTURE
--------------------
-src/projectdna/       Java source
-web/                  HTML/CSS/JS
-lib/                  SQLite JDBC driver (downloaded automatically if absent)
-data/                 SQLite database created at runtime
-bin/                  compiled .class files
-run.bat               compile + run
-setup.bat             driver setup helper
-README.txt            this guide
-VIVA_NOTES.txt        viva answers
+These routes handle login, registration, project management, recommendations, team formation, contact requests, and communication.
 
-10. COMMON ERRORS
------------------
-'java is not recognized': Install JDK 17+ and restart VS Code/Windows terminal.
-'SQLite JDBC driver not found': Run setup.bat with internet access. The driver is downloaded automatically.
-'Port 8080 already in use': Close the other Java/server program using port 8080, then run again.
-'Invalid login': Use the demo credentials exactly and choose the matching account type.
-'Unable to connect': The Java server is not running. Start run.bat and keep its console open.
 
-11. VIVA FLOW
--------------
-Explain: Browser -> HTML/CSS/JS -> Java HTTP server -> API route -> JDBC -> SQLite -> JSON response -> browser.
+9. PROJECT FOLDER STRUCTURE
+---------------------------
 
-12. SECURITY NOTE
------------------
-This is an educational college project. Passwords are stored simply for beginner demonstration and are not suitable for a production application. A real system should use password hashing, sessions/JWT, validation, HTTPS and stronger security controls.
+ProjectDNA/
+|
+|-- src/projectdna/
+|   |-- Java backend source files
+|
+|-- web/
+|   |-- HTML pages
+|   |-- css/
+|   |-- js/
+|
+|-- lib/
+|   |-- SQLite JDBC driver
+|
+|-- data/
+|   |-- SQLite database
+|
+|-- bin/
+|   |-- Compiled Java files
+|
+|-- run.bat
+|-- setup.bat
+|-- README.txt
+|-- VIVA_NOTES.txt
 
-13. CONTACT AND REQUEST SYSTEM
+
+The src folder contains the Java backend source code.
+
+The web folder contains the frontend pages, CSS, and JavaScript.
+
+The lib folder contains the SQLite JDBC driver.
+
+The data folder contains the SQLite database.
+
+The bin folder contains the compiled Java class files.
+
+The run.bat file is used to compile and start the application.
+
+The setup.bat file helps set up the SQLite JDBC driver.
+
+
+10. HOW THE APPLICATION WORKS
+----------------------------
+
+The basic working flow of ProjectDNA is:
+
+User
+  ↓
+Browser
+  ↓
+HTML / CSS / JavaScript
+  ↓
+Java HTTP Server
+  ↓
+API Route
+  ↓
+JDBC
+  ↓
+SQLite Database
+  ↓
+JSON Response
+  ↓
+Browser
+
+
+For example, when a student logs in, the browser sends the login information to the Java backend.
+
+The Java backend checks the information stored in the SQLite database.
+
+The backend then sends the result back to the browser in JSON format.
+
+The frontend displays the appropriate page based on the response.
+
+
+11. CONTACT AND REQUEST SYSTEM
 ------------------------------
-The interactive version includes a simple communication workflow:
-- Students can click "Contact Creator" from a project or recommendation.
-- Creators can click "Contact" beside a matching student.
-- A sender writes a message and sends a project/contact request.
-- The receiver sees pending requests in "Contact & Requests".
-- The receiver can Accept or Reject the request.
-- Accepted connections remain visible in the communication center.
-- A notification badge shows the number of pending incoming requests.
-- Contact requests are stored in SQLite in the contact_requests table.
 
-This is intentionally simple for a college viva. It is a request/communication system, not a production chat service.
+ProjectDNA includes a simple communication system between students and project creators.
 
-TEAM FORMATION UPDATE
+Students can:
+
+- Contact project creators.
+- Send project or contact requests.
+- View incoming requests.
+- Accept or manage requests.
+- Reply to accepted connections.
+
+Project creators can:
+
+- View suitable students.
+- Contact students.
+- Send requests.
+- Accept or reject incoming requests.
+- Reply to accepted connections.
+
+The contact requests are stored in the SQLite database.
+
+A notification badge is also displayed when there are pending incoming requests.
+
+This feature is designed as a simple college-level communication system rather than a complete real-time chat application.
+
+
+12. TEAM FORMATION
+------------------
+
+Team formation is mainly controlled by the Project Creator.
+
+The Student Portal does not contain a separate "Find Teammates" option.
+
+Students can:
+
+- Browse projects.
+- View their skill matches.
+- Receive project recommendations.
+- Contact project creators.
+- Manage contact requests.
+
+Project creators can use the Team Formation section to:
+
+1. Select one of their projects.
+2. View students who match the project's required skills.
+3. Compare their skill match percentages.
+4. Contact suitable students.
+5. Select team members.
+6. Save the team for the selected project.
+
+This makes team formation project-specific and more organized.
+
+
+13. MATCH DISPLAY FIX
 ---------------------
-Team formation is controlled by Project Creators. The Student Portal no longer shows a
-Find Teammates option. Students can browse projects, view recommendations, contact
-creators, and manage requests. Creators use Team Formation to find students, compare
-skill matches, contact students, select members, and save a team.
+
+The matching system displays different information depending on the user's role.
+
+Student View:
+
+Students can see their own skill match for each project.
+
+Creator View:
+
+Creators can see the highest matching student for their project.
+
+The creator-side label is:
+
+"Top Student Match"
+
+This makes it clear that the percentage represents the best matching student and not the creator's own skills.
 
 
-MATCH DISPLAY FIX
-- Student project pages show the student's own skill match.
-- Creator project pages now show the highest skill match among available students instead of comparing the project against the creator profile.
-- The creator label is "Top Student Match" to make the meaning clear.
+14. OPEN AND CLOSE PROJECT FEATURE
+----------------------------------
+
+Project creators can control whether their project is accepting students.
+
+When a new project is created, it starts as:
+
+OPEN
+
+The creator can click:
+
+"Close Project"
+
+when they no longer want to accept new students.
+
+A closed project remains visible to the creator but is displayed with:
+
+CLOSED
+
+The creator can later click:
+
+"Reopen Project"
+
+to make the project available again.
+
+Students can only see projects that are currently OPEN.
+
+Students cannot send project contact requests for CLOSED projects.
 
 
-OPEN/CLOSE PROJECT UPDATE
---------------------------
-Creators can now control whether a project is accepting students.
-- New projects start as OPEN.
-- Click "Close Project" to stop student recruitment/contact requests.
-- Closed projects remain visible to the creator with a CLOSED status.
-- Click "Reopen Project" to make the project available again.
-- Students only see OPEN projects and cannot send project contact requests for CLOSED projects.
+15. PROJECT FILTERING
+---------------------
 
-TEAM FORMATION MATCH FIX
-------------------------
-Team Formation is now project-specific. A creator selects one of their projects,
-and ProjectDNA compares that project's required skills against every student's skills.
-The displayed percentage is therefore the student's match for the selected project,
-not a comparison against the creator's profile. Saved teams are linked to the selected
-project. The Team Formation page also passes the selected project when contacting a student.
+Project visibility depends on the type of user.
 
-PROJECT FILTER FIX
-- Creator Projects page now shows only projects owned by the logged-in creator.
-- Students continue to see all OPEN projects.
+Creator:
 
-CONTACT REPLY / MESSAGING UPDATE
-- Accepted connections now have a Reply button in Contact & Requests.
-- Clicking Reply opens the conversation history for that project/contact request.
-- The original request message is shown first, followed by replies.
-- Both the student and project creator can reply after the request is accepted.
-- Replies are stored in the SQLite contact_messages table, so they remain available after refresh/restart.
-- Pending requests still use Accept / Reject. Reply becomes available after acceptance.
+A creator can see only the projects created by their own account.
+
+This prevents projects belonging to other creators from appearing in their personal project list.
+
+Student:
+
+Students can browse all available OPEN projects.
+
+This allows students to discover projects that match their skills and interests.
+
+
+16. REPLY AND MESSAGING FEATURE
+------------------------------
+
+The communication system also allows users to continue a conversation after a request has been accepted.
+
+Once a request is accepted, a "Reply" button becomes available.
+
+When the user clicks Reply:
+
+- The conversation history is displayed.
+- The original request message is shown first.
+- New replies appear below it.
+- Both students and project creators can continue the conversation.
+
+The messages are stored in the SQLite database using the:
+
+contact_messages
+
+table.
+
+Because the messages are stored in the database, they remain available even after refreshing the page or restarting the application.
+
+
+17. COMMON PROBLEMS AND SOLUTIONS
+---------------------------------
+
+Problem 1:
+"java is not recognized"
+
+Solution:
+Install JDK 17 or a newer version and restart VS Code or the terminal.
+
+
+Problem 2:
+"SQLite JDBC driver not found"
+
+Solution:
+Run setup.bat with an internet connection.
+
+Normally, run.bat can also download the SQLite JDBC driver automatically.
+
+
+Problem 3:
+"Port 8080 already in use"
+
+Solution:
+Another application may already be using port 8080.
+
+Close the other Java/server application and start ProjectDNA again.
+
+
+Problem 4:
+"Invalid login"
+
+Solution:
+Make sure the correct email, password, and account type are being used.
+
+Use the demo credentials provided in this document.
+
+
+Problem 5:
+"Unable to connect to server"
+
+Solution:
+The Java server is probably not running.
+
+Start run.bat and keep the server window open while using the website.
+
+
+18. SECURITY NOTE
+-----------------
+
+ProjectDNA is an educational college project, so the authentication system is intentionally kept simple.
+
+Passwords are stored in a basic form for demonstration purposes.
+
+A real-world application would require stronger security features such as:
+
+- Password hashing
+- Secure sessions or JWT
+- Input validation
+- HTTPS
+- Strong authentication and authorization
+- Better database security
+
+Therefore, ProjectDNA should be considered a college-level prototype and not a production-ready application.
+
+
+19. VIVA EXPLANATION
+--------------------
+
+If asked how ProjectDNA works, the basic explanation is:
+
+"ProjectDNA is a web application where the frontend is developed using HTML, CSS, and JavaScript. The backend is developed using Java's built-in HTTP server. The frontend communicates with the backend through API routes. The backend processes the requests and uses JDBC to communicate with the SQLite database. The database stores information about users, students, projects, skills, teams, and contact requests. The results are returned to the frontend in JSON format and displayed to the user."
+
+
+20. CONCLUSION
+--------------
+
+ProjectDNA brings project discovery, skill matching, recommendations, communication, and team formation together in a single application.
+
+The main goal of the project is to make it easier for students and project creators to find suitable team members based on skills and project requirements.
+
+The project demonstrates several important concepts, including:
+
+- Web development
+- Java backend programming
+- REST-style API communication
+- SQLite database management
+- JDBC
+- Data structures
+- Skill matching
+- Recommendation logic
+- Team formation
+- Client-server communication
+
+Overall, ProjectDNA provides a simple and practical solution for student project team formation while demonstrating how frontend, backend, database, and data structure concepts can work together in one application.
