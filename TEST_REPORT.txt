@@ -1,0 +1,28 @@
+PROJECTDNA - INTERACTIVE TEST REPORT
+====================================
+
+Build checks completed in the packaging environment:
+[PASS] Java source compilation with javac
+[PASS] JavaScript syntax check with Node
+[PASS] Contact request database table added
+[PASS] Contact send endpoint added
+[PASS] Contact list endpoint added
+[PASS] Contact accept/reject endpoint added
+[PASS] Contact & Requests page added
+[PASS] Student project -> Contact Creator flow added
+[PASS] Student recommendation -> Contact Creator flow added
+[PASS] Creator Find Students -> Contact Student flow added
+[PASS] Pending request badge added
+[PASS] Profile and existing project/team flows retained
+
+Runtime note:
+The packaging environment does not have network access to download the SQLite JDBC binary. The supplied run.bat/setup.bat downloads the SQLite JDBC driver automatically from Maven Central on the first run if lib/sqlite-jdbc.jar is missing.
+
+Manual runtime test on the user's PC:
+1. Start run.bat.
+2. Register two different users.
+3. Login as a student and send a Contact Creator request.
+4. Logout and login as creator.
+5. Open Contact & Requests.
+6. Accept the request.
+7. Verify it appears under Accepted Connections.

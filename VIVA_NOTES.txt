@@ -1,0 +1,76 @@
+PROJECTDNA - SIMPLE VIVA ANSWERS
+================================
+
+What is ProjectDNA?
+ProjectDNA is a web-based student project and team formation system. It connects student skills with project requirements and helps users form suitable teams.
+
+Why did you choose this project?
+We chose it because students often have skills but may not know which projects or teammates match those skills. The system makes that process easier.
+
+What is the purpose of skill matching?
+It compares a student's skills with the required skills of a project and calculates a percentage.
+
+How is match percentage calculated?
+Matching skills divided by total required skills, multiplied by 100.
+
+Why ArrayList?
+ArrayList is useful for storing an ordered list of projects or students.
+
+Why HashMap?
+HashMap stores data as key-value pairs and is useful for quick access to related information.
+
+Why HashSet?
+HashSet stores unique values. We use the idea of a set for unique skills and skill comparison.
+
+Why PriorityQueue?
+A priority-based structure is suitable for ranking recommendations by match percentage. In this beginner version, the returned recommendations are sorted by percentage for simplicity.
+
+Why SQLite?
+SQLite is lightweight, file-based and does not require a separate database server.
+
+Why Java?
+Java provides the backend server, JDBC database access and basic object/data-structure support in one language.
+
+What is the frontend?
+HTML creates the page structure, CSS creates the design, and JavaScript sends API requests and updates the page.
+
+What is the backend?
+The backend is a Java HTTP server. It receives API requests, performs database operations through JDBC and returns JSON.
+
+How does login work?
+The browser sends email, password and account type to POST /api/login. Java checks the users table in SQLite and returns the matching user.
+
+How does registration work?
+The browser sends registration details to POST /api/register. Java checks duplicate email, inserts the user and inserts student/creator details into the related table.
+
+How does project creation work?
+A creator submits title, description and required skills. Java inserts them into the projects table.
+
+How are recommendations generated?
+For each project, the backend compares required skills with the student's skills and calculates a percentage. Projects are returned from highest match to lowest match.
+
+How is team formation performed?
+Students are displayed with their skill match. The user selects members and the selected IDs are stored in teams and team_members.
+
+What happens when the server starts?
+The database driver is loaded, SQLite database/tables are created if needed, demo accounts and sample projects are inserted if absent, and the Java HTTP server starts on port 8080.
+
+Explain the architecture in one sentence.
+The browser is the frontend, Java is the backend/API layer, JDBC is the database bridge, and SQLite stores the application data.
+
+CONTACT / COMMUNICATION FEATURE
+-------------------------------
+Q: How can a student contact a project creator?
+A: The student opens Projects or Recommendations, selects a project and clicks Contact Creator. The student enters a message and sends a request.
+
+Q: How can a creator contact a student?
+A: The creator opens Find Students and clicks Contact beside a suitable student.
+
+Q: How does the creator receive the request?
+A: The request is stored in SQLite. The creator can open Contact & Requests and Accept or Reject it.
+
+Q: What is stored for a contact request?
+A: Sender, receiver, optional project, message, status and creation time are stored in the contact_requests table.
+
+Q: Is this a real-time chat application?
+A: No. It is a simple request and communication feature designed to be easy to explain. A production system could later add real-time messaging and notifications.

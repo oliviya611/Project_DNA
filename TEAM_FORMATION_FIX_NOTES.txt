@@ -1,0 +1,13 @@
+TEAM FORMATION FIX
+
+Fixed the 0% bug in Team Formation.
+
+OLD:
+Creator skills -> Student skills -> match (incorrect for creator team formation)
+
+NEW:
+Selected project required skills -> Student skills -> match
+
+The creator now selects a project before reviewing students. Each student receives a
+project-specific match percentage. Teams saved from this page are associated with the
+selected project.
